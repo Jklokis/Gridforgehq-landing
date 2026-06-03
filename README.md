@@ -1,2 +1,857 @@
 # Gridforgehq-landing
 Webpages
+[index.html](https://github.com/user-attachments/files/28552805/index.html)
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GridForgeHQ · Dashboards, Trackers &amp; Reporting Systems for Business Operations</title>
+  <meta name="description" content="GridForgeHQ builds Excel dashboards, Google Sheets trackers, KPI scorecards, and inventory systems that turn scattered data into clear answers. Built on 15+ years in supply chain and operations." />
+  <meta name="theme-color" content="#0E1116" />
+  <meta name="robots" content="index, follow" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="GridForgeHQ · Dashboards, Trackers &amp; Reporting Systems" />
+  <meta property="og:description" content="Excel dashboards, Google Sheets trackers, KPI tools, and operations templates. Built by an operator with 15+ years in supply chain." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <script>
+    document.documentElement.classList.remove('no-js');
+    document.documentElement.classList.add('js');
+  </script>
+
+  <style>
+    :root{
+      --steel-900:#0E1116;
+      --steel-850:#12161D;
+      --steel-800:#161B23;
+      --steel-750:#1A2029;
+      --steel-700:#1E242E;
+      --steel-600:#272F3A;
+      --steel-500:#3A4350;
+      --steel-400:#5C6675;
+      --steel-300:#8A94A2;
+      --steel-250:#A3ACB8;
+      --steel-200:#C2C9D2;
+      --steel-100:#E2E6EB;
+
+      --paper:#F3F0E9;
+      --paper-line:#D8D2C4;
+      --ink:#12151B;
+      --ink-soft:#3C424C;
+
+      --forge:#FF6A1A;
+      --forge-bright:#FF8A3D;
+      --forge-deep:#D9500D;
+      --forge-glow:rgba(255,106,26,.35);
+
+      --ok:#46C28C;
+      --warn:#E9B84A;
+
+      --maxw:1180px;
+      --gutter:clamp(20px,5vw,56px);
+      --radius:4px;
+      --radius-lg:6px;
+
+      --font-display:'Archivo', system-ui, sans-serif;
+      --font-body:'Archivo', system-ui, sans-serif;
+      --font-mono:'IBM Plex Mono', ui-monospace, monospace;
+    }
+
+    *,*::before,*::after{box-sizing:border-box;}
+    html{scroll-behavior:smooth;scroll-padding-top:80px;-webkit-text-size-adjust:100%;}
+    body{
+      margin:0;font-family:var(--font-body);background:var(--steel-900);
+      color:var(--steel-100);line-height:1.6;font-size:17px;
+      -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+    }
+    img{max-width:100%;display:block;}
+    a{color:inherit;text-decoration:none;}
+    button{font-family:inherit;}
+
+    .wrap{width:100%;max-width:var(--maxw);margin-inline:auto;padding-inline:var(--gutter);}
+    section{position:relative;scroll-margin-top:84px;}
+
+    .eyebrow{
+      font-family:var(--font-mono);font-size:12px;font-weight:600;
+      letter-spacing:.2em;text-transform:uppercase;color:var(--forge);
+      display:inline-flex;align-items:center;gap:10px;
+    }
+    .eyebrow::before{content:"";width:26px;height:2px;background:var(--forge);display:inline-block;}
+    .eyebrow.center{justify-content:center;}
+
+    h1,h2,h3,h4{font-family:var(--font-display);font-weight:800;line-height:1.04;letter-spacing:-0.02em;margin:0;}
+    h2{font-size:clamp(28px,4.4vw,44px);letter-spacing:-0.025em;}
+    .section-head{max-width:680px;}
+    .section-head h2{margin-top:18px;}
+    .section-head p{margin:16px 0 0;font-size:18px;color:var(--steel-300);}
+    .section-head.light p{color:var(--ink-soft);}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;
+      font-family:var(--font-mono);font-weight:600;font-size:13px;letter-spacing:.06em;
+      text-transform:uppercase;padding:15px 24px;border-radius:var(--radius);
+      border:1.5px solid transparent;cursor:pointer;white-space:nowrap;
+      transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease, color .18s ease;
+    }
+    .btn-primary{background:var(--forge);color:#1a0c02;box-shadow:0 0 0 0 var(--forge-glow);}
+    .btn-primary:hover{background:var(--forge-bright);transform:translateY(-2px);box-shadow:0 10px 30px -8px var(--forge-glow);}
+    .btn-ghost{background:transparent;color:var(--steel-100);border-color:var(--steel-500);}
+    .btn-ghost:hover{border-color:var(--forge);color:#fff;transform:translateY(-2px);}
+    .btn-disabled{background:var(--steel-700);color:var(--steel-300);border-color:var(--steel-600);cursor:not-allowed;}
+    .btn .arrow{transition:transform .18s ease;}
+    .btn:hover .arrow{transform:translateX(3px);}
+
+    /* header */
+    header.site{
+      position:sticky;top:0;z-index:50;background:rgba(14,17,22,.78);
+      backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px;}
+    .brand{display:flex;align-items:center;gap:11px;font-family:var(--font-display);font-weight:800;font-size:19px;letter-spacing:-0.01em;}
+    .brand .hq{
+      font-family:var(--font-mono);font-size:11px;font-weight:600;letter-spacing:.12em;
+      color:var(--forge);border:1px solid var(--forge);border-radius:3px;padding:2px 5px;margin-left:2px;transform:translateY(-1px);
+    }
+    .mark{width:30px;height:30px;flex:none;display:block;}
+    .nav-links{display:flex;align-items:center;gap:30px;}
+    .nav-links a{font-family:var(--font-mono);font-size:12.5px;font-weight:500;letter-spacing:.04em;color:var(--steel-250);transition:color .15s ease;position:relative;}
+    .nav-links a:hover{color:#fff;}
+    .nav-links a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--forge);transition:width .2s ease;}
+    .nav-links a:hover::after{width:100%;}
+    .nav-cta{display:flex;align-items:center;gap:14px;}
+    .nav-cta .btn{padding:11px 18px;font-size:12px;}
+    @media (max-width:860px){.nav-links{display:none;}}
+    @media (max-width:520px){.nav-cta .btn{display:none;}}
+
+    .grid-bg{
+      position:absolute;inset:0;pointer-events:none;
+      background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+      background-size:34px 34px;
+      mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%);
+      -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 30%, #000 40%, transparent 100%);
+    }
+    .ticks-c{position:relative;}
+    .tick{position:absolute;width:9px;height:9px;border:1.5px solid var(--steel-500);}
+    .tick.tl{top:-1px;left:-1px;border-right:0;border-bottom:0;}
+    .tick.tr{top:-1px;right:-1px;border-left:0;border-bottom:0;}
+    .tick.bl{bottom:-1px;left:-1px;border-right:0;border-top:0;}
+    .tick.br{bottom:-1px;right:-1px;border-left:0;border-top:0;}
+
+    /* hero */
+    .hero{
+      position:relative;padding-top:clamp(56px,9vw,104px);padding-bottom:clamp(64px,9vw,108px);
+      overflow:hidden;
+      background:
+        radial-gradient(120% 90% at 78% -10%, rgba(255,106,26,.16), transparent 55%),
+        linear-gradient(180deg, var(--steel-900), var(--steel-850));
+    }
+    .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.04fr 0.96fr;gap:clamp(36px,5vw,64px);align-items:center;}
+    .hero h1{font-size:clamp(36px,5.4vw,62px);font-weight:900;margin-top:22px;letter-spacing:-0.03em;}
+    .hero h1 .hl{color:var(--forge);}
+    .hero p.sub{margin:24px 0 0;font-size:clamp(17px,1.5vw,20px);color:var(--steel-250);max-width:570px;}
+    .hero-cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px;}
+    .hero-foot{margin-top:30px;display:flex;align-items:center;gap:12px;font-family:var(--font-mono);font-size:12px;letter-spacing:.03em;color:var(--steel-400);}
+    .hero-foot .dot{width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);flex:none;}
+
+    .js .hero .anim{opacity:0;transform:translateY(18px);}
+    .js .hero.ready .anim{opacity:1;transform:none;transition:opacity .7s ease, transform .7s ease;}
+    .js .hero.ready .d1{transition-delay:.05s;}
+    .js .hero.ready .d2{transition-delay:.15s;}
+    .js .hero.ready .d3{transition-delay:.25s;}
+    .js .hero.ready .d4{transition-delay:.35s;}
+    .js .hero.ready .d5{transition-delay:.45s;}
+
+    /* dashboard mock */
+    .panel-shell{position:relative;}
+    .panel-glow{position:absolute;inset:-14% -10% -24% -6%;background:radial-gradient(60% 60% at 70% 25%, rgba(255,106,26,.32), transparent 70%);filter:blur(14px);z-index:0;}
+    .panel{
+      position:relative;z-index:1;background:linear-gradient(180deg, var(--steel-800), var(--steel-750));
+      border:1px solid rgba(255,255,255,.09);border-radius:8px;
+      box-shadow:0 40px 80px -30px rgba(0,0,0,.7), 0 0 0 1px rgba(0,0,0,.4);overflow:hidden;
+    }
+    .panel-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--steel-700);border-bottom:1px solid rgba(255,255,255,.06);}
+    .panel-dots{display:flex;gap:6px;}
+    .panel-dots span{width:9px;height:9px;border-radius:50%;background:var(--steel-500);}
+    .panel-dots span:first-child{background:var(--forge);}
+    .panel-file{font-family:var(--font-mono);font-size:11.5px;color:var(--steel-300);letter-spacing:.02em;}
+    .panel-tag{margin-left:auto;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-400);border:1px solid var(--steel-600);border-radius:3px;padding:2px 6px;}
+    .panel-body{padding:16px;}
+    .kpi-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:14px;}
+    .kpi{background:var(--steel-850);border:1px solid rgba(255,255,255,.05);border-left:2px solid var(--forge);border-radius:4px;padding:11px 12px;}
+    .kpi .lbl{font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-300);}
+    .kpi .val{font-family:var(--font-display);font-weight:800;font-size:23px;letter-spacing:-0.02em;margin-top:4px;display:flex;align-items:baseline;gap:7px;}
+    .kpi .trend{font-family:var(--font-mono);font-size:11px;font-weight:600;display:inline-flex;align-items:center;gap:3px;}
+    .trend.up{color:var(--ok);}
+    .trend.down{color:var(--forge);}
+    .trend.flat{color:var(--steel-300);}
+    .chart-card{background:var(--steel-850);border:1px solid rgba(255,255,255,.05);border-radius:4px;padding:13px 14px 12px;margin-bottom:13px;}
+    .chart-card .chead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+    .chart-card .chead .t{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-250);}
+    .chart-card .chead .v{font-family:var(--font-mono);font-size:10.5px;color:var(--steel-400);}
+    .bars{display:flex;align-items:flex-end;gap:7px;height:70px;}
+    .bars .bar{flex:1;background:linear-gradient(180deg, var(--forge-bright), var(--forge-deep));border-radius:2px 2px 0 0;opacity:.92;}
+    .bars .bar.mut{background:var(--steel-600);}
+    .mini-table{font-family:var(--font-mono);font-size:11.5px;}
+    .mini-table .row{display:grid;grid-template-columns:1fr auto auto;gap:10px;align-items:center;padding:8px 2px;border-bottom:1px solid rgba(255,255,255,.05);}
+    .mini-table .row.head{color:var(--steel-400);font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.1);}
+    .mini-table .row:last-child{border-bottom:0;}
+    .mini-table .row span:nth-child(1){color:var(--steel-200);}
+    .mini-table .row span:nth-child(3){color:var(--steel-300);text-align:right;min-width:34px;}
+    .pill{font-size:10px;padding:2px 8px;border-radius:20px;letter-spacing:.04em;text-transform:uppercase;font-weight:600;}
+    .pill.ok{background:rgba(70,194,140,.14);color:var(--ok);}
+    .pill.open{background:rgba(255,106,26,.14);color:var(--forge);}
+    .pill.low{background:rgba(233,184,74,.16);color:var(--warn);}
+
+    /* credibility strip */
+    .cred{background:var(--steel-850);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
+    .cred .wrap{padding-block:0;}
+    .cred-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+    .cred-item{padding:30px clamp(16px,3vw,30px);border-left:1px solid rgba(255,255,255,.06);}
+    .cred-item:first-child{border-left:0;}
+    .cred-item .num{font-family:var(--font-display);font-weight:800;font-size:30px;letter-spacing:-0.02em;color:var(--forge);display:flex;align-items:center;gap:6px;min-height:38px;}
+    .cred-item .num.sm{font-size:21px;}
+    .cred-item .num svg{flex:none;}
+    .cred-item .lbl{font-family:var(--font-mono);font-size:12px;color:var(--steel-300);margin-top:8px;letter-spacing:.01em;line-height:1.45;}
+    @media (max-width:760px){
+      .cred-grid{grid-template-columns:repeat(2,1fr);}
+      .cred-item{border-left:0;}
+      .cred-item:nth-child(2n){border-left:1px solid rgba(255,255,255,.06);}
+      .cred-item:nth-child(n+3){border-top:1px solid rgba(255,255,255,.06);}
+    }
+
+    .sec{padding:clamp(64px,8vw,104px) 0;}
+    .sec.alt{background:linear-gradient(180deg, var(--steel-850), var(--steel-900));}
+
+    .js .reveal{opacity:0;transform:translateY(22px);}
+    .js .reveal.in{opacity:1;transform:none;transition:opacity .65s ease, transform .65s ease;}
+
+    /* build cards */
+    .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px;}
+    .card{
+      position:relative;background:linear-gradient(180deg, var(--steel-800), var(--steel-750));
+      border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-lg);
+      padding:30px 26px 28px;overflow:hidden;
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+    .card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--forge);transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
+    .card:hover{transform:translateY(-5px);border-color:rgba(255,106,26,.4);box-shadow:0 30px 60px -34px rgba(0,0,0,.8);}
+    .card:hover::before{transform:scaleX(1);}
+    .card .idx{font-family:var(--font-mono);font-size:12px;font-weight:600;color:var(--forge);letter-spacing:.1em;}
+    .card .ico{width:46px;height:46px;border:1px solid rgba(255,255,255,.12);border-radius:6px;display:flex;align-items:center;justify-content:center;margin:18px 0;background:var(--steel-850);}
+    .card h3{font-size:21px;font-weight:800;letter-spacing:-0.01em;}
+    .card p{margin:12px 0 0;font-size:15.5px;color:var(--steel-300);line-height:1.62;}
+
+    /* operator */
+    .operator{background:radial-gradient(90% 120% at 100% 0%, rgba(255,106,26,.10), transparent 55%), linear-gradient(180deg, var(--steel-900), var(--steel-850));border-top:1px solid rgba(255,255,255,.06);}
+    .op-grid{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(36px,5vw,68px);align-items:center;}
+    .ladder{display:flex;flex-direction:column;gap:10px;}
+    .rung{display:flex;align-items:center;gap:14px;padding:15px 18px;background:var(--steel-800);border:1px solid rgba(255,255,255,.07);border-radius:5px;}
+    .rung .step{font-family:var(--font-mono);font-size:11px;color:var(--steel-400);min-width:26px;}
+    .rung .role{font-family:var(--font-display);font-weight:700;font-size:16px;letter-spacing:-0.01em;}
+    .rung .climb{margin-left:auto;color:var(--steel-500);}
+    .rung:nth-child(1){margin-left:0;opacity:.78;}
+    .rung:nth-child(2){margin-left:14px;opacity:.86;}
+    .rung:nth-child(3){margin-left:28px;opacity:.93;}
+    .rung:nth-child(4){margin-left:42px;border-color:rgba(255,106,26,.5);background:linear-gradient(180deg, var(--steel-750), var(--steel-800));}
+    .rung:nth-child(4) .role{color:#fff;}
+    .rung:nth-child(4) .step{color:var(--forge);}
+    .op-body h2{margin-top:18px;}
+    .op-body p{color:var(--steel-250);font-size:17px;margin:18px 0 0;}
+    .op-body p + p{margin-top:14px;}
+    .op-chiprow{margin-top:26px;}
+    .op-chiprow .clab{font-family:var(--font-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--steel-400);display:block;margin-bottom:12px;}
+    .chips{display:flex;flex-wrap:wrap;gap:8px;}
+    .chip{font-family:var(--font-mono);font-size:11.5px;color:var(--steel-200);border:1px solid var(--steel-600);border-radius:20px;padding:7px 13px;background:var(--steel-800);}
+
+    /* services (light) */
+    .services{
+      background:var(--paper);color:var(--ink);
+      background-image:linear-gradient(rgba(18,21,27,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(18,21,27,.035) 1px, transparent 1px);
+      background-size:30px 30px;
+    }
+    .services .eyebrow{color:var(--forge-deep);}
+    .services .eyebrow::before{background:var(--forge-deep);}
+    .services h2{color:var(--ink);}
+    .svc-cols{margin-top:42px;display:grid;grid-template-columns:1fr 1fr;gap:0 52px;}
+    .svc-group-title{font-family:var(--font-mono);font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--forge-deep);padding-bottom:14px;border-bottom:2px solid var(--ink);margin-bottom:2px;}
+    .svc{display:flex;gap:14px;align-items:flex-start;padding:16px 4px;border-bottom:1px solid var(--paper-line);transition:background .15s ease, padding-left .15s ease;}
+    .svc:last-child{border-bottom:0;}
+    .svc:hover{background:rgba(255,106,26,.05);padding-left:10px;}
+    .svc .mk{width:7px;height:7px;background:var(--forge-deep);margin-top:8px;flex:none;}
+    .svc .st{font-family:var(--font-display);font-weight:700;font-size:16.5px;letter-spacing:-0.01em;color:var(--ink);}
+    .svc .sd{font-size:13.5px;color:var(--ink-soft);margin-top:3px;line-height:1.5;}
+    @media (max-width:680px){.svc-cols{grid-template-columns:1fr;gap:0;}.svc-col + .svc-col{margin-top:36px;}}
+
+    /* templates */
+    .tpl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:44px;}
+    .tpl{background:var(--steel-800);border:1px solid rgba(255,255,255,.07);border-radius:5px;padding:22px 22px 20px;display:flex;align-items:flex-start;gap:14px;transition:border-color .2s ease, transform .2s ease;}
+    .tpl:hover{border-color:rgba(255,106,26,.4);transform:translateY(-3px);}
+    .tpl .tn{font-family:var(--font-mono);font-size:11px;color:var(--forge);border:1px solid rgba(255,106,26,.35);border-radius:4px;padding:5px 8px;flex:none;}
+    .tpl h4{font-size:16px;font-weight:700;letter-spacing:-0.01em;}
+    .tpl p{margin:5px 0 0;font-size:13.5px;color:var(--steel-300);line-height:1.5;}
+
+    /* demos */
+    .demo-note{margin-top:18px;font-family:var(--font-mono);font-size:12.5px;color:var(--steel-400);max-width:660px;line-height:1.6;}
+    .demos-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:38px;}
+    .demo{background:linear-gradient(180deg, var(--steel-800), var(--steel-750));border:1px solid rgba(255,255,255,.07);border-radius:var(--radius-lg);overflow:hidden;transition:border-color .2s ease, transform .2s ease, box-shadow .2s ease;}
+    .demo:hover{border-color:rgba(255,106,26,.35);transform:translateY(-4px);box-shadow:0 26px 50px -34px rgba(0,0,0,.8);}
+    .demo-thumb{height:150px;position:relative;background:var(--steel-850);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;}
+    .demo-thumb .badge{position:absolute;top:12px;left:12px;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--forge);background:rgba(255,106,26,.1);border:1px solid rgba(255,106,26,.3);border-radius:3px;padding:3px 7px;z-index:3;}
+    .demo-meta{padding:20px 22px 22px;}
+    .demo-meta h4{font-size:18px;font-weight:800;letter-spacing:-0.01em;}
+    .demo-meta p{margin:8px 0 0;font-size:14px;color:var(--steel-300);line-height:1.55;}
+    .demo-meta .soon{margin-top:14px;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--steel-400);}
+    .demo-meta .soon .d{width:6px;height:6px;border-radius:50%;background:var(--warn);}
+    @media (max-width:880px){.demos-3{grid-template-columns:1fr;}}
+
+    .demo-secondary{margin-top:18px;display:flex;align-items:center;gap:20px;background:var(--steel-850);border:1px dashed rgba(255,255,255,.14);border-radius:var(--radius-lg);padding:20px 24px;}
+    .demo-secondary .ds-ico{width:46px;height:46px;flex:none;border:1px solid var(--steel-600);border-radius:6px;display:flex;align-items:center;justify-content:center;background:var(--steel-800);}
+    .demo-secondary .ds-body h4{font-size:16px;font-weight:700;letter-spacing:-0.01em;}
+    .demo-secondary .ds-body p{margin:5px 0 0;font-size:13.5px;color:var(--steel-300);line-height:1.5;max-width:560px;}
+    .demo-secondary .ds-tag{margin-left:auto;flex:none;font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--steel-400);border:1px solid var(--steel-600);border-radius:3px;padding:5px 9px;text-align:center;line-height:1.4;}
+    @media (max-width:680px){.demo-secondary{flex-wrap:wrap;gap:14px;}.demo-secondary .ds-tag{margin-left:0;}}
+
+    /* contact band */
+    .cta-band{background:radial-gradient(80% 140% at 50% 0%, rgba(255,106,26,.16), transparent 60%), linear-gradient(180deg, var(--steel-850), var(--steel-900));border-top:1px solid rgba(255,255,255,.06);text-align:center;padding:clamp(56px,8vw,90px) 0;}
+    .cta-band h2{font-size:clamp(26px,3.6vw,40px);max-width:680px;margin-inline:auto;}
+    .cta-band p{color:var(--steel-300);margin:16px auto 30px;max-width:480px;font-size:17px;}
+
+    /* faq */
+    .faq-list{margin-top:42px;border-top:1px solid rgba(255,255,255,.08);}
+    details.faq{border-bottom:1px solid rgba(255,255,255,.08);}
+    details.faq summary{
+      list-style:none;cursor:pointer;display:flex;align-items:center;gap:16px;padding:22px 4px;
+      font-family:var(--font-display);font-weight:700;font-size:18px;letter-spacing:-0.01em;color:var(--steel-100);transition:color .15s ease;
+    }
+    details.faq summary::-webkit-details-marker{display:none;}
+    details.faq summary:hover{color:#fff;}
+    details.faq .q-mark{font-family:var(--font-mono);font-size:13px;font-weight:600;color:var(--forge);flex:none;}
+    details.faq .plus{margin-left:auto;flex:none;width:22px;height:22px;position:relative;transition:transform .25s ease;}
+    details.faq .plus::before,details.faq .plus::after{content:"";position:absolute;background:var(--forge);border-radius:1px;top:50%;left:50%;transform:translate(-50%,-50%);}
+    details.faq .plus::before{width:14px;height:2px;}
+    details.faq .plus::after{width:2px;height:14px;transition:transform .25s ease;}
+    details.faq[open] .plus::after{transform:translate(-50%,-50%) scaleY(0);}
+    details.faq .ans{padding:0 4px 24px 42px;color:var(--steel-300);font-size:15.5px;line-height:1.65;max-width:760px;}
+
+    /* footer */
+    footer.site{background:var(--steel-900);border-top:1px solid rgba(255,255,255,.07);padding:46px 0 40px;}
+    .foot-top{display:flex;align-items:flex-start;justify-content:space-between;gap:30px;flex-wrap:wrap;}
+    .foot-brand .brand{font-size:21px;margin-bottom:12px;}
+    .foot-brand p{color:var(--steel-400);font-size:14px;max-width:340px;margin:0;}
+    .foot-cols{font-family:var(--font-mono);font-size:13px;color:var(--steel-400);display:flex;gap:14px;flex-direction:column;text-align:right;}
+    .foot-cols a{transition:color .15s ease;}
+    .foot-cols a:hover{color:var(--forge);}
+    .foot-bottom{margin-top:38px;padding-top:22px;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;font-family:var(--font-mono);font-size:11.5px;color:var(--steel-500);letter-spacing:.03em;}
+    .foot-bottom .preview-tag{color:var(--steel-400);border:1px solid var(--steel-700);border-radius:3px;padding:4px 9px;}
+
+    @media (max-width:920px){
+      .hero-grid{grid-template-columns:1fr;}
+      .panel-shell{max-width:520px;}
+      .op-grid{grid-template-columns:1fr;}
+      .cards3{grid-template-columns:1fr;}
+      .tpl-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media (max-width:600px){
+      body{font-size:16px;}
+      .tpl-grid{grid-template-columns:1fr;}
+      .rung:nth-child(n){margin-left:0;}
+      .foot-cols{text-align:left;}
+    }
+    @media (prefers-reduced-motion:reduce){
+      *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+      .js .reveal,.js .hero .anim{opacity:1 !important;transform:none !important;}
+    }
+    a:focus-visible,button:focus-visible,summary:focus-visible{outline:2px solid var(--forge);outline-offset:3px;border-radius:2px;}
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site">
+    <div class="wrap nav">
+      <a href="#top" class="brand" aria-label="GridForgeHQ home">
+        <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="1.5" y="1.5" width="29" height="29" rx="3" stroke="#5C6675" stroke-width="1.5"/>
+          <line x1="11" y1="2" x2="11" y2="30" stroke="#3A4350" stroke-width="1.3"/>
+          <line x1="21" y1="2" x2="21" y2="30" stroke="#3A4350" stroke-width="1.3"/>
+          <line x1="2" y1="11" x2="30" y2="11" stroke="#3A4350" stroke-width="1.3"/>
+          <line x1="2" y1="21" x2="30" y2="21" stroke="#3A4350" stroke-width="1.3"/>
+          <rect x="21" y="21" width="9" height="9" fill="#FF6A1A"/>
+          <rect x="11" y="11" width="10" height="10" fill="#FF6A1A" opacity="0.22"/>
+        </svg>
+        <span>GridForge<span class="hq">HQ</span></span>
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#builds">What We Build</a>
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="#templates">Templates</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <div class="nav-cta">
+        <a href="#builds" class="btn btn-primary">See What We Build</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="grid-bg"></div>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <span class="eyebrow anim d1">Operations Tools · Dashboards · Reporting</span>
+        <h1 class="anim d2">Know what's happening in your operation, <span class="hl">without the guesswork.</span></h1>
+        <p class="sub anim d3">GridForgeHQ builds Excel dashboards, Google Sheets trackers, KPI scorecards, and inventory systems that turn scattered, manual data into clear answers. Built on 15+ years in supply chain and operations.</p>
+        <div class="hero-cta anim d4">
+          <a href="#builds" class="btn btn-primary">See What We Build <span class="arrow">&rarr;</span></a>
+          <a href="#services" class="btn btn-ghost">View Services</a>
+        </div>
+        <div class="hero-foot anim d5">
+          <span class="dot"></span>
+          <span>For teams stuck with messy spreadsheets, manual tracking, and no clear view.</span>
+        </div>
+      </div>
+
+      <div class="panel-shell anim d3">
+        <div class="panel-glow"></div>
+        <div class="panel" role="img" aria-label="Illustration of an operations dashboard showing KPI tiles, a weekly throughput chart, and an inventory tracker table, populated with sample data.">
+          <div class="panel-bar">
+            <div class="panel-dots"><span></span><span></span><span></span></div>
+            <span class="panel-file">ops_dashboard.xlsx</span>
+            <span class="panel-tag">Sample data</span>
+          </div>
+          <div class="panel-body">
+            <div class="kpi-row">
+              <div class="kpi"><div class="lbl">On-Time Ship</div><div class="val">98.2%<span class="trend up">&#9650; 1.4</span></div></div>
+              <div class="kpi"><div class="lbl">Pick Accuracy</div><div class="val">99.6%<span class="trend up">&#9650; 0.3</span></div></div>
+              <div class="kpi"><div class="lbl">Open Jobs</div><div class="val">14<span class="trend down">&#9660; 6</span></div></div>
+              <div class="kpi"><div class="lbl">Labor Hrs</div><div class="val">312<span class="trend flat">&mdash; 0</span></div></div>
+            </div>
+            <div class="chart-card">
+              <div class="chead"><span class="t">Weekly Throughput</span><span class="v">units / day</span></div>
+              <div class="bars" aria-hidden="true">
+                <div class="bar" style="height:52%"></div>
+                <div class="bar" style="height:68%"></div>
+                <div class="bar" style="height:46%"></div>
+                <div class="bar" style="height:82%"></div>
+                <div class="bar" style="height:74%"></div>
+                <div class="bar" style="height:94%"></div>
+                <div class="bar mut" style="height:38%"></div>
+              </div>
+            </div>
+            <div class="mini-table" aria-hidden="true">
+              <div class="row head"><span>Item</span><span>Status</span><span>Qty</span></div>
+              <div class="row"><span>SKU-4471 · Pallet Wrap</span><span class="pill ok">Done</span><span>240</span></div>
+              <div class="row"><span>SKU-1180 · Label Roll</span><span class="pill low">Low</span><span>32</span></div>
+              <div class="row"><span>SKU-9302 · Bin Tote</span><span class="pill open">Open</span><span>118</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CREDIBILITY STRIP -->
+  <section class="cred" aria-label="Background and capabilities">
+    <div class="wrap">
+      <div class="cred-grid">
+        <div class="cred-item">
+          <div class="num">15<span style="font-size:20px;">+</span></div>
+          <div class="lbl">Years in supply chain,<br>warehouse &amp; logistics ops</div>
+        </div>
+        <div class="cred-item">
+          <div class="num">
+            <svg width="44" height="20" viewBox="0 0 44 20" fill="none" aria-hidden="true">
+              <path d="M2 18 L14 18 L22 11 L30 11 L42 2" stroke="#FF6A1A" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="42" cy="2" r="2.6" fill="#FF6A1A"/>
+            </svg>
+          </div>
+          <div class="lbl">Hourly roles up to senior<br>&amp; director-level leadership</div>
+        </div>
+        <div class="cred-item">
+          <div class="num sm">Excel · Sheets · SQL</div>
+          <div class="lbl">Reporting and dashboards<br>that hold up day to day</div>
+        </div>
+        <div class="cred-item">
+          <div class="num sm">Custom-built</div>
+          <div class="lbl">Shaped around your process,<br>not off-the-shelf bloat</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 01 WHAT GRIDFORGE BUILDS -->
+  <section class="sec" id="builds">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">01 · What GridForgeHQ Builds</span>
+        <h2>Three ways to get your operation organized.</h2>
+        <p>From the reporting that runs your week to the day-to-day tracking your team leans on.</p>
+      </div>
+
+      <div class="cards3">
+        <article class="card ticks-c reveal">
+          <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+          <div class="idx">01</div>
+          <div class="ico" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="3" y="3" width="18" height="18" rx="2" stroke="#FF6A1A" stroke-width="1.6"/>
+              <line x1="3" y1="9" x2="21" y2="9" stroke="#FF6A1A" stroke-width="1.4"/>
+              <rect x="6" y="12" width="2.5" height="6" fill="#FF6A1A"/>
+              <rect x="11" y="13.5" width="2.5" height="4.5" fill="#FF6A1A" opacity=".6"/>
+              <rect x="16" y="11" width="2.5" height="7" fill="#FF6A1A"/>
+            </svg>
+          </div>
+          <h3>Dashboards &amp; Reporting</h3>
+          <p>Excel and Google Sheets dashboards, KPI scorecards, and reporting cleanup. One clear view of your operation instead of ten tabs and a number nobody trusts.</p>
+        </article>
+
+        <article class="card ticks-c reveal">
+          <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+          <div class="idx">02</div>
+          <div class="ico" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <rect x="4" y="3" width="16" height="18" rx="2" stroke="#FF6A1A" stroke-width="1.6"/>
+              <line x1="8" y1="8" x2="16" y2="8" stroke="#FF6A1A" stroke-width="1.4"/>
+              <line x1="8" y1="12" x2="16" y2="12" stroke="#FF6A1A" stroke-width="1.4" opacity=".6"/>
+              <path d="M8 16 L10 18 L13 14.5" stroke="#FF6A1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Trackers &amp; Templates</h3>
+          <p>Inventory, job, project, labor, and productivity trackers, plus ready-to-use operations templates. Built for how small teams really run, not how software assumes they do.</p>
+        </article>
+
+        <article class="card ticks-c reveal">
+          <span class="tick tl"></span><span class="tick tr"></span><span class="tick bl"></span><span class="tick br"></span>
+          <div class="idx">03</div>
+          <div class="ico" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <circle cx="12" cy="12" r="9" stroke="#FF6A1A" stroke-width="1.6"/>
+              <path d="M12 7 V12 L15.5 14" stroke="#FF6A1A" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h3>Operations Consulting Support</h3>
+          <p>Workflow cleanup, reporting structure, inventory visibility, and KPI design. Practical help getting your operation organized around the metrics that matter.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 BUILT BY AN OPERATOR -->
+  <section class="operator sec" id="about">
+    <div class="wrap op-grid">
+      <div class="op-visual reveal">
+        <div class="ladder" aria-label="Career progression from hourly operations to director-level leadership">
+          <div class="rung"><span class="step">L1</span><span class="role">Hourly Operations</span><span class="climb" aria-hidden="true">&#9650;</span></div>
+          <div class="rung"><span class="step">L2</span><span class="role">Team Lead &amp; Supervisor</span><span class="climb" aria-hidden="true">&#9650;</span></div>
+          <div class="rung"><span class="step">L3</span><span class="role">Operations Manager</span><span class="climb" aria-hidden="true">&#9650;</span></div>
+          <div class="rung"><span class="step">L4</span><span class="role">Senior &amp; Director Level</span></div>
+        </div>
+      </div>
+
+      <div class="op-body reveal">
+        <span class="eyebrow">02 · Built by an Operator</span>
+        <h2>Built by someone who's worked the floor.</h2>
+        <p>GridForgeHQ comes out of 15+ years in supply chain, warehouse operations, fulfillment, logistics, and distribution. It started in hourly roles and worked up to senior and director-level leadership, which meant leading people, fixing broken processes, and owning reporting and execution inside high-volume operations.</p>
+        <p>It also meant a lot of hours in Excel, Google Sheets, and SQL-style reporting, solving problems that never had a clean off-the-shelf tool. The systems built here are made the same way: for what teams, managers, and owners need to run the day.</p>
+        <div class="op-chiprow">
+          <span class="clab">Hands-on experience</span>
+          <div class="chips">
+            <span class="chip">WMS environments</span>
+            <span class="chip">Replenishment</span>
+            <span class="chip">Inventory accuracy</span>
+            <span class="chip">Labor planning</span>
+            <span class="chip">KPI dashboards</span>
+            <span class="chip">Process improvement</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SERVICES OVERVIEW -->
+  <section class="services sec" id="services">
+    <div class="wrap">
+      <div class="section-head light reveal">
+        <span class="eyebrow">03 · Services</span>
+        <h2>What GridForgeHQ can build for you.</h2>
+        <p>Custom work, shaped around your process. Whether you're starting from scratch or fixing a file that's grown messy over the years.</p>
+      </div>
+
+      <div class="svc-cols reveal">
+        <div class="svc-col">
+          <div class="svc-group-title">Dashboards &amp; Reporting</div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Excel Dashboards</div><div class="sd">Organized views of the metrics you check most.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Google Sheets Dashboards</div><div class="sd">Live, shareable dashboards the whole team can use.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">KPI Scorecards</div><div class="sd">The right measures, tracked in one place.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Operations Reporting Setup</div><div class="sd">Consistent, repeatable reporting you can rely on.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Reporting &amp; Workflow Cleanup</div><div class="sd">Turn scattered, manual processes into something clean.</div></div></div>
+        </div>
+        <div class="svc-col">
+          <div class="svc-group-title">Trackers, Systems &amp; Support</div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Inventory Trackers</div><div class="sd">Know what you have, what's low, and what's moving.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Labor &amp; Productivity Trackers</div><div class="sd">Track hours and output without the guesswork.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Project &amp; Job Trackers</div><div class="sd">Status, owners, and deadlines in one view.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Custom Spreadsheet Systems</div><div class="sd">Built around your exact process, start to finish.</div></div></div>
+          <div class="svc"><span class="mk"></span><div><div class="st">Operations Consulting Support</div><div class="sd">Guidance on reporting structure and operational setup.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 TEMPLATES -->
+  <section class="sec alt" id="templates">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">04 · Templates &amp; Products</span>
+        <h2>Or start with a ready-made template.</h2>
+        <p>Custom builds are the core of GridForgeHQ. These ready-to-use templates give you a practical starting point you can put to work today, then adapt as you go.</p>
+      </div>
+
+      <div class="tpl-grid">
+        <div class="tpl reveal"><span class="tn">T1</span><div><h4>Inventory Management</h4><p>Stock levels, reorder points, and movement in one place.</p></div></div>
+        <div class="tpl reveal"><span class="tn">T2</span><div><h4>KPI Reporting</h4><p>Scorecards and dashboards ready to drop your numbers into.</p></div></div>
+        <div class="tpl reveal"><span class="tn">T3</span><div><h4>Small Business Operations</h4><p>Simple tools to keep the day-to-day organized.</p></div></div>
+        <div class="tpl reveal"><span class="tn">T4</span><div><h4>Project Tracking</h4><p>Track status, owners, and timelines from day one.</p></div></div>
+        <div class="tpl reveal"><span class="tn">T5</span><div><h4>Warehouse &amp; Logistics</h4><p>Workflow templates built from real warehouse experience.</p></div></div>
+        <div class="tpl reveal"><span class="tn">T6</span><div><h4>Productivity Tracking</h4><p>Measure output and labor without the spreadsheet sprawl.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 EXAMPLES & DEMOS -->
+  <section class="sec" id="demos">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">05 · Examples &amp; Demos</span>
+        <h2>A look at the kind of systems GridForgeHQ builds.</h2>
+        <p class="demo-note">Interactive demos are on the way. The previews below show the types of systems GridForgeHQ creates. They're examples only, built with sample data, not client work.</p>
+      </div>
+
+      <div class="demos-3">
+        <article class="demo reveal">
+          <div class="demo-thumb">
+            <span class="badge">Example</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="150" fill="#12161D"/>
+              <line x1="0" y1="38" x2="320" y2="38" stroke="#272F3A" stroke-width="1"/>
+              <line x1="0" y1="76" x2="320" y2="76" stroke="#272F3A" stroke-width="1"/>
+              <line x1="0" y1="114" x2="320" y2="114" stroke="#272F3A" stroke-width="1"/>
+              <line x1="160" y1="18" x2="160" y2="140" stroke="#272F3A" stroke-width="1"/>
+              <line x1="244" y1="18" x2="244" y2="140" stroke="#272F3A" stroke-width="1"/>
+              <rect x="16" y="26" width="70" height="7" rx="2" fill="#5C6675"/>
+              <rect x="174" y="26" width="40" height="7" rx="2" fill="#5C6675"/>
+              <rect x="256" y="26" width="30" height="7" rx="2" fill="#5C6675"/>
+              <rect x="16" y="54" width="90" height="6" rx="2" fill="#3A4350"/>
+              <rect x="174" y="53" width="40" height="13" rx="6" fill="rgba(70,194,140,.22)"/>
+              <rect x="16" y="92" width="80" height="6" rx="2" fill="#3A4350"/>
+              <rect x="174" y="91" width="40" height="13" rx="6" fill="rgba(255,106,26,.26)"/>
+              <rect x="16" y="130" width="96" height="6" rx="2" fill="#3A4350"/>
+              <rect x="174" y="129" width="40" height="13" rx="6" fill="rgba(233,184,74,.26)"/>
+              <rect x="258" y="54" width="22" height="6" rx="2" fill="#FF6A1A" opacity=".7"/>
+              <rect x="258" y="92" width="22" height="6" rx="2" fill="#FF6A1A" opacity=".7"/>
+              <rect x="258" y="130" width="22" height="6" rx="2" fill="#FF6A1A" opacity=".7"/>
+            </svg>
+          </div>
+          <div class="demo-meta">
+            <h4>Inventory Tracker Demo</h4>
+            <p>Stock levels, reorder flags, and movement in a single view.</p>
+            <span class="soon"><span class="d"></span> Demo coming soon</span>
+          </div>
+        </article>
+
+        <article class="demo reveal">
+          <div class="demo-thumb">
+            <span class="badge">Example</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="150" fill="#12161D"/>
+              <rect x="16" y="16" width="84" height="42" rx="4" fill="#1A2029" stroke="#272F3A"/>
+              <rect x="24" y="24" width="40" height="5" rx="2" fill="#5C6675"/>
+              <rect x="24" y="36" width="30" height="11" rx="2" fill="#FF6A1A"/>
+              <rect x="118" y="16" width="84" height="42" rx="4" fill="#1A2029" stroke="#272F3A"/>
+              <rect x="126" y="24" width="40" height="5" rx="2" fill="#5C6675"/>
+              <rect x="126" y="36" width="34" height="11" rx="2" fill="#46C28C"/>
+              <rect x="220" y="16" width="84" height="42" rx="4" fill="#1A2029" stroke="#272F3A"/>
+              <rect x="228" y="24" width="40" height="5" rx="2" fill="#5C6675"/>
+              <rect x="228" y="36" width="26" height="11" rx="2" fill="#E9B84A"/>
+              <rect x="16" y="70" width="288" height="64" rx="4" fill="#1A2029" stroke="#272F3A"/>
+              <rect x="34" y="110" width="20" height="14" fill="#FF6A1A" opacity=".85"/>
+              <rect x="66" y="98" width="20" height="26" fill="#FF6A1A" opacity=".85"/>
+              <rect x="98" y="106" width="20" height="18" fill="#FF6A1A" opacity=".85"/>
+              <rect x="130" y="88" width="20" height="36" fill="#FF6A1A" opacity=".85"/>
+              <rect x="162" y="96" width="20" height="28" fill="#FF6A1A" opacity=".85"/>
+              <rect x="194" y="84" width="20" height="40" fill="#FF6A1A"/>
+              <rect x="226" y="104" width="20" height="20" fill="#3A4350"/>
+              <rect x="258" y="94" width="20" height="30" fill="#3A4350"/>
+            </svg>
+          </div>
+          <div class="demo-meta">
+            <h4>KPI Dashboard Demo</h4>
+            <p>Scorecard tiles and trends that surface how the operation is running.</p>
+            <span class="soon"><span class="d"></span> Demo coming soon</span>
+          </div>
+        </article>
+
+        <article class="demo reveal">
+          <div class="demo-thumb">
+            <span class="badge">Example</span>
+            <svg width="100%" height="100%" viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="320" height="150" fill="#12161D"/>
+              <rect x="16" y="16" width="180" height="118" rx="4" fill="#1A2029" stroke="#272F3A"/>
+              <polyline points="28,110 60,90 92,98 124,68 156,80 184,50" fill="none" stroke="#FF6A1A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="184" cy="50" r="3.5" fill="#FF6A1A"/>
+              <line x1="28" y1="120" x2="184" y2="120" stroke="#272F3A"/>
+              <line x1="28" y1="34" x2="28" y2="120" stroke="#272F3A"/>
+              <rect x="210" y="16" width="94" height="118" rx="4" fill="#1A2029" stroke="#272F3A"/>
+              <rect x="222" y="28" width="60" height="6" rx="2" fill="#5C6675"/>
+              <rect x="222" y="46" width="70" height="5" rx="2" fill="#3A4350"/>
+              <rect x="222" y="60" width="50" height="5" rx="2" fill="#3A4350"/>
+              <rect x="222" y="76" width="66" height="5" rx="2" fill="#3A4350"/>
+              <rect x="222" y="90" width="44" height="5" rx="2" fill="#3A4350"/>
+              <rect x="222" y="106" width="60" height="14" rx="3" fill="rgba(255,106,26,.2)"/>
+            </svg>
+          </div>
+          <div class="demo-meta">
+            <h4>Operations Reporting Demo</h4>
+            <p>Raw activity turned into a clear, repeatable weekly picture.</p>
+            <span class="soon"><span class="d"></span> Demo coming soon</span>
+          </div>
+        </article>
+      </div>
+
+      <div class="demo-secondary reveal">
+        <div class="ds-ico" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="4" width="18" height="14" rx="2" stroke="#8A94A2" stroke-width="1.5"/>
+            <line x1="3" y1="8" x2="21" y2="8" stroke="#8A94A2" stroke-width="1.5"/>
+            <circle cx="5.5" cy="6" r="0.8" fill="#8A94A2"/>
+            <circle cx="8" cy="6" r="0.8" fill="#8A94A2"/>
+            <line x1="9" y1="21" x2="15" y2="21" stroke="#8A94A2" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <div class="ds-body">
+          <h4>Also exploring: simple local service websites</h4>
+          <p>Down the road, GridForgeHQ may build clean, straightforward websites for local service businesses. It's a secondary capability, not the focus here.</p>
+        </div>
+        <span class="ds-tag">Secondary<br>Coming later</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PLACEHOLDER -->
+  <section class="cta-band" id="contact">
+    <div class="wrap">
+      <span class="eyebrow center reveal" style="display:flex;justify-content:center;">Get in Touch</span>
+      <h2 class="reveal" style="margin-top:18px;">Need a dashboard, tracker, or reporting system built around your process?</h2>
+      <p class="reveal">GridForgeHQ is getting set up now. Contact options and service details are coming soon.</p>
+      <button class="btn btn-disabled reveal" type="button" disabled aria-disabled="true">Contact Details Coming Soon</button>
+    </div>
+  </section>
+
+  <!-- 06 FAQ -->
+  <section class="sec alt" id="faq">
+    <div class="wrap">
+      <div class="section-head reveal">
+        <span class="eyebrow">06 · FAQ</span>
+        <h2>Straight answers.</h2>
+      </div>
+
+      <div class="faq-list reveal">
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Do you build custom spreadsheets? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">Yes. Most of the work is custom. Dashboards, trackers, and reporting built around how your operation runs, not a one-size template forced onto your process.</div>
+        </details>
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Can you improve an existing Excel or Google Sheets file? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">Yes. Plenty of projects start with a file that's grown messy over time. GridForgeHQ can clean up the structure, fix the formulas, and turn it into something clear and reliable.</div>
+        </details>
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Do you work with small businesses? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">Yes. Small businesses and local service operations are a core focus. The goal is simple, practical tools, not heavy software you'll never fully use.</div>
+        </details>
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Do I need to know exactly what I want? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">No. If you can describe the problem, what's messy, what you can't see, what takes too long, that's enough to start. Figuring out the right setup is part of the work.</div>
+        </details>
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Can you help organize messy tracking processes? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">Yes. Scattered tabs, manual updates, and numbers that don't match are exactly what these systems are built to fix.</div>
+        </details>
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Do you offer consulting support? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">Yes. Beyond building files, GridForgeHQ helps with reporting structure, KPIs, inventory visibility, and getting an operation organized around the right information.</div>
+        </details>
+        <details class="faq" name="faq">
+          <summary><span class="q-mark">Q</span> Will contact options be added later? <span class="plus" aria-hidden="true"></span></summary>
+          <div class="ans">Yes. This is an early landing page. Contact details and service options will be added soon.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site">
+    <div class="wrap">
+      <div class="foot-top">
+        <div class="foot-brand">
+          <div class="brand">
+            <svg class="mark" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+              <rect x="1.5" y="1.5" width="29" height="29" rx="3" stroke="#5C6675" stroke-width="1.5"/>
+              <line x1="11" y1="2" x2="11" y2="30" stroke="#3A4350" stroke-width="1.3"/>
+              <line x1="21" y1="2" x2="21" y2="30" stroke="#3A4350" stroke-width="1.3"/>
+              <line x1="2" y1="11" x2="30" y2="11" stroke="#3A4350" stroke-width="1.3"/>
+              <line x1="2" y1="21" x2="30" y2="21" stroke="#3A4350" stroke-width="1.3"/>
+              <rect x="21" y="21" width="9" height="9" fill="#FF6A1A"/>
+              <rect x="11" y="11" width="10" height="10" fill="#FF6A1A" opacity="0.22"/>
+            </svg>
+            <span>GridForge<span class="hq">HQ</span></span>
+          </div>
+          <p>Practical digital systems. Dashboards, trackers, and reporting for real business operations.</p>
+        </div>
+        <nav class="foot-cols" aria-label="Footer">
+          <a href="#builds">What We Build</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#templates">Templates</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+      </div>
+      <div class="foot-bottom">
+        <span>© 2026 GridForgeHQ. All rights reserved.</span>
+        <span class="preview-tag">Landing page preview</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    window.addEventListener('load', function(){
+      var hero = document.querySelector('.hero');
+      if (hero) requestAnimationFrame(function(){ hero.classList.add('ready'); });
+    });
+    requestAnimationFrame(function(){
+      var hero = document.querySelector('.hero');
+      if (hero) hero.classList.add('ready');
+    });
+    (function(){
+      var els = document.querySelectorAll('.reveal');
+      if (!('IntersectionObserver' in window) || !els.length){
+        els.forEach(function(el){ el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold:0.12, rootMargin:'0px 0px -8% 0px' });
+      els.forEach(function(el){ io.observe(el); });
+    })();
+  </script>
+</body>
+</html>
